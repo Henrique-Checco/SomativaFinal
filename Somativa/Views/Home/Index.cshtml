@@ -1,0 +1,188 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Página Home";
+}
+
+<style>
+    .containerr {
+        position: relative;
+        text-align: center;
+        color: white;
+    }
+
+    .top-right {
+        position: absolute;
+        top: 8px;
+        right: 25px;
+    }
+
+    .top-rightt {
+        position: absolute;
+        top: 8px;
+        right: 100px;
+    }
+</style>
+
+<div class="containerr ">
+    <img class="d-block img-fluid" src="~/img/hero.png" alt="" width="100%" style="height:100%; width:230vh;">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-light btn btn-dark border-light-2 m-2 p-2 top-rightt d-none " asp-area="Identity" asp-page="/Account/Register">Registro</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light btn btn-dark border-light-2 m-2 p-2 top-right d-none " asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-light btn btn-dark border-light-2 m-2 p-2 top-rightt" asp-area="Identity" asp-page="/Account/Register">Registro</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light btn btn-dark border-light-2 m-2 p-2 top-right " asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
+</div>
+<ul class="nav nav-underline justify-content-center m-5  ">
+    <li class="nav-item p-2">
+        <button class="tablink btn text-white " onclick="trocarElementos('London', this, 'red')" id="defaultOpen"><h5 class="d-sm-none">Novos</h5> <h3 class=" d-none d-md-block"> Novos</h3> </button>
+    </li>
+    <li class="nav-item p-2">
+        <button class="tablink btn text-white " onclick="trocarElementos('Paris', this, 'green')"><h5 class="d-sm-none">Em Detaque</h5> <h3 class=" d-none d-md-block">Em Detaque</h3></button>
+    </li>
+    <li class="nav-item p-2 ">
+        <button class="tablink btn text-white " onclick="trocarElementos('Tokyo', this, 'blue')"><h5 class="d-sm-none">Mais Procurados</h5> <h3 class=" d-none d-md-block">Mais Procurados</h3> </button>
+    </li>
+
+</ul>
+<div class="">
+    <div id="London" class="tabcontent">
+        <div class="row m-auto mb-4 ">
+            <img class="col-12 m-2 col-md-4 m-md-0" src="~/img/f1.jpg" />
+            <img class="col-12 m-2  col-md-4 m-md-0" src="~/img/f2.jpg" />
+            <img class="col-12 m-2  col-md-4 m-md-0" src="~/img/f3.jpg" />
+        </div>
+        <div class="row m-auto mb-4">
+            <img class="col-12 m-2 col-md-4 m-md-0" src="~/img/f4.jpg" />
+            <img class="col-12 m-2 d-none col-md-4 m-md-0 d-md-block " src="~/img/f25.jpg" />
+            <img class="col-12 m-2 d-none  col-md-4 m-md-0 d-md-block" src="~/img/f18.jpeg" />
+        </div>
+    </div>
+
+    <div id="Paris" class="tabcontent row" style="display:none;">
+        <div class="row m-auto mb-4">
+            <img class="col-12 m-2 col-md-4 m-md-0" src="~/img/f7.jpg" />
+            <img class="col-12 m-2 col-md-4 m-md-0 " src="~/img/f22.jpg" />
+            <img class="col-12 m-2 col-md-4 m-md-0" src="~/img/f9.jpg" />
+        </div>
+        <div class="row m-auto mb-4">
+            <img class="col-12 m-2 col-md-4 m-md-0 " src="~/img/f20.jpg" />
+            <img class="col-12 m-2 d-none col-md-4 m-md-0 d-md-block" src="~/img/f17.webp" />
+            <img class="col-12 m-2 d-none col-md-4 m-md-0 d-md-block" src="~/img/f6.jpg" />
+        </div>
+    </div>
+
+    <div id="Tokyo" class="tabcontent row" style="display:none;">
+        <div class="row m-auto mb-4">
+            <img class="col-12 m-2 col-md-4 m-md-0" src="~/img/f8.jpg" />
+            <img class="col-12 m-2 col-md-4 m-md-0 " src="~/img/f21.jpg" />
+            <img class="col-12 m-2 col-md-4 m-md-0 " src="~/img/f23.jpg" />
+        </div>
+        <div class="row m-auto mb-4">
+            <img class="col-12 m-2 col-md-4 m-md-0 " src="~/img/f24.jpg" />
+            <img class="col-12 m-2 d-none col-md-4 m-md-0 d-md-block" src="~/img/f26.jpg" />
+            <img class="col-12 m-2 d-none col-md-4 m-md-0 d-md-block " src="~/img/f5.jpg" />
+        </div>
+    </div>
+</div>
+<div class="b-example-divider"></div>
+
+<div class=" container  px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3 text-white">Assista do seu jeito</h1>
+            <p class="lead text-white">Aproveita a tela grande da TV ou assista no tablet, laptop, celular e outros aparelhos. Nossa seleção de títulos em 4K não para de crescer. Além disso, para a felicidade de todos, é possível assistir em até 4 telas ao mesmo tempo.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            </div>
+        </div>
+        <div class="col-12 col-sm-8 col-lg-6">
+            <img src="~/img/hero1.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="1000" height="800" loading="lazy">
+        </div>
+    </div>
+</div>
+<h2 class="text-white text-center m-5">Disponível em seus dispositivos favoritos</h2>
+
+
+<div class="container col-12">
+    <div class="row justify-content-center">
+        <div class="col-5 m-2 col-md-3 m-md-0">
+            <div class="text-center">
+                <svg bootstrap-icon="Tv" width="150" height="150" class="text-light"></svg>
+            </div>
+            <div class="text-center">
+                <h3 class="text-light text-danger" style="text-align:center;">TV</h3>
+                <p class="text-light m-0">Amazon Fire TV</p>
+                <p class="text-light m-0">Android TV devices</p>
+                <p class="text-light m-0">AppleTV</p>
+                <p class="text-light m-0">LG TV</p>
+                <p class="text-light m-0"> Roku</p>
+                <p class="text-light m-0"> Samsung</p>
+                <p class="text-light m-0">Xfinity X1 & Flex</p>
+                <p class="text-light m-0"> Hisense</p>
+                <p class="text-light m-0">Panasonic</p>
+            </div>
+        </div>
+        <div class="col-5 m-2 col-md-3 m-md-0">
+            <div class="text-center ">
+                <svg bootstrap-icon="Laptop" width="120" height="120" class="text-light m-2"></svg>
+            </div>
+            <div class="text-center">
+                <h3 class="text-light text-danger" style="text-align:center;">Laptop</h3>
+                <p class="text-light m-0">Chrome OS</p>
+                <p class="text-light m-0">MacOS</p>
+                <p class="text-light m-0">  Windows PC</p>
+            </div>
+        </div>
+        <div class="col-5 m-2 col-md-3 m-md-0">
+            <div class="text-center">
+                <svg bootstrap-icon="Phone" width="100" height="100" class="text-light m-3"></svg>
+            </div>
+            <div class="text-center">
+                <h3 class="text-light text-danger" style="text-align:center;">Celular</h3>
+                <p class="text-light m-0">Amazon Fire Tablets</p>
+                <p class="text-light m-0">Android Phones & Tablets</p>
+                <p class="text-light m-0"> iPhone and iPad</p>
+            </div>
+        </div>
+        <div class="col-5 m-2 col-md-3 m-md-0">
+            <div class="text-center">
+                <svg bootstrap-icon="Controller" width="120" height="120" class="text-light "></svg>
+            </div>
+            <div class="text-center">
+                <h3 class="text-light text-danger" style="text-align:center;">Console</h3>
+                <p class="text-light m-0">PS4</p>
+                <p class="text-light m-0">PS5</p>
+                <p class="text-light m-0">Xbox One</p>
+                <p class="text-light m-0">Xbox Series X</p>
+                <p class="text-light m-0">Xbox Series S</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="text-center position-sticky">
+    <div class="container " style="text-align:center;">
+        <img src="~/img/logo.png" class="col-10 col-md-6" />
+    </div>
+</footer>
+
+
+@section Scripts{
+    <partial name="_scriptPartial" />
+}

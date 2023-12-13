@@ -1,0 +1,55 @@
+﻿@model Somativa.Models.Produto
+
+@{
+    ViewData["Title"] = "Criar Produto";
+}
+
+<div class="container">
+    <h1 class="text-center text-white">Criar Produto</h1>
+
+    <hr class="text-white" />
+    <div class="row" style="display: flex; justify-content: center;">
+        <div class="col-md-4">
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Nome" class="control-label text-white"></label>
+                    <input asp-for="Nome" class="form-control" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="Estoque" class="control-label text-white"></label>
+                    <input asp-for="Estoque" class="form-control" />
+                    <span asp-validation-for="Estoque" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="Preco" class="control-label text-white"></label>
+                    <input asp-for="Preco" type="number" step=".01" class="form-control" />
+                    <span asp-validation-for="Preco" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="CategoriaId" class="control-label text-white"></label>
+                    <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="FornecedorId" class="control-label text-white"></label>
+                    <select asp-for="FornecedorId" class="form-control" asp-items="ViewBag.FornecedorId"></select>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="Imagem" class="control-label text-white"></label>
+                    <input asp-for="Imagem" name="imgUp" type="file" class="form-control" placeholder=""/>
+                    <span asp-validation-for="Imagem" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-4 text-center">
+                    <button class="btn text-white" style="background-color:darkblue" asp-action="Create">Salvar</button>
+                    <a class="btn btn-secondary ms-3" asp-action="Index">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

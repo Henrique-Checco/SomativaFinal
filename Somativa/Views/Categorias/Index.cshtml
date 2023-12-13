@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Somativa.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+<div class="imgFundo">
+    <div class="container pt-5">
+        <div class="p-5" style="background-color:#353333">
+            <h1 class="text-white">Categorias</h1>
+
+            <div class="w-50 mt-2">
+                <a asp-action="Create" class="btn text-white" style="background-color:darkblue">Criar Novo</a>
+            </div>
+
+            <div class="boards">
+                <div class="board">
+                    <div class="dropzone row" style="background-color:#353333; display:flex; justify-content:center ">
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="cards bg-black ms-2" draggable="true">
+                                <div class="content">
+                                    <h3 class="text-white">@item.Nome</h3>
+
+                                    <div>
+                                    </div>
+                                    <div class="text-center">
+
+                                        <a class="btn" asp-action="Edit" asp-route-id="@item.CategoriaId">
+                                            <svg bootstrap-icon="Pencil" class="text-white" width="20" height="20"></svg>
+                                        </a>
+                                        <a class="btn" asp-action="Details" asp-route-id="@item.CategoriaId">
+                                            <svg bootstrap-icon="FileEarmarkMedical" class="text-white" width="20" height="20"></svg>
+                                        </a>
+                                        <a asp-action="Delete" class="btn" asp-route-id="@item.CategoriaId" data-bs-toggle="modal" data-bs-target="#exampleModal_@item.CategoriaId"
+                                           data-bs-tittle="Excluir"
+                                           data-bs-placement="bottom">
+                                            <svg bootstrap-icon="Trash" class="text-white" width="20" height="20"></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    @foreach (var item in Model)
+    {
+        <div class="modal fade" id="exampleModal_@item.CategoriaId" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Tem certeza que você deseja excluir?</p>
+                        <dl class="row text-center">
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Nome)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => item.Nome)
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <form asp-action="Delete" class="text-white" asp-route-id="@item.CategoriaId">
+                            <input type="hidden" asp-for="@item.CategoriaId" />
+                            <button type="button" class="btn btn-secondary mt-2" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" value="Apagar" class="btn btn-danger mt-2 ms-2">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

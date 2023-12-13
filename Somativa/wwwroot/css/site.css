@@ -1,0 +1,103 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color:#353333;
+}
+
+.board {
+    border: 1px solid #fd955111;
+    border-radius: 0;
+    margin: 14px;
+}
+
+.dropzone {
+    padding: 16px;
+    min-height: 400px;
+    min-width: 300px;
+}
+
+.cards {
+    padding: 13px;
+    box-shadow: 0 2px -1px #fd951fcc;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: #1a1a1c;
+    margin-bottom: 13px;
+    max-width:350px;
+    max-height:300px;
+}
+
+.cards-produtos {
+    padding: 13px;
+    box-shadow: 0 2px -1px #fd951fcc;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: #1a1a1c;
+    margin-bottom: 13px;
+    max-width: 350px;
+    max-height: 500px;
+}
+
+.category {
+    padding: 4px;
+    height: 8px;
+    width: 32px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background-color: gray;
+}
+
+    .category.green {
+        background-color: aquamarine;
+    }
+
+    .category.blue {
+        background-color: firebrick;
+    }
+
+    .category.red {
+        background-color: pink;
+    }
+
+
+
+.highlight {
+    cursor: move;
+    background-color: #fd951f19;
+}
+
+.imgFundo{
+    background-image:url(../img/background.png);
+    background-size:cover;
+    width: 100%; 
+    height:1000px;
+    background-repeat: repeat;
+    
+}
+
+@media (min-width: 768px) {
+    .imgResp {
+        width: 305px;
+        height: 200px;
+    }
+}
